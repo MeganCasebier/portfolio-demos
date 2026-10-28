@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-demos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test demos/rules-wrapper/test/*.test.js",
+    "check": "node tools/blocklist.mjs"
+  }
+}
