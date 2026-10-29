@@ -2,6 +2,12 @@
    IBM Plex Mono for the engine's table and anything code-flavored. The shell is warm paper; the
    engine is dark and foreign on purpose. Motion is 120ms ease, and reduced motion turns it off. */
 
+/* Fallbacks tuned to the web fonts' measured metrics (Chrome, canvas measureText at 100px), so the
+   swap from system font to web font moves nothing. Override = font metric / size-adjust. */
+@font-face { font-family: "Inter Fallback"; src: local("Arial"); size-adjust: 106.72%; ascent-override: 90.89%; descent-override: 22.49%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader Fallback"; src: local("Georgia"); size-adjust: 100.16%; ascent-override: 73.88%; descent-override: 25.96%; line-gap-override: 0%; }
+@font-face { font-family: "Plex Mono Fallback"; src: local("Courier New"); size-adjust: 99.98%; ascent-override: 102.02%; descent-override: 27.01%; line-gap-override: 0%; }
+
 :root {
     --ground: #F4F3EF; --surface: #FFFFFF; --ink: #1A1A18; --soft: #6B6860; --faint: #8E8A80;
     --rule: #DEDCD5; --rule-soft: #ECEAE4; --hover: #EDEBE5;
@@ -9,7 +15,7 @@
     --err: #B4442E; --err-bg: #FBEDE9; --warn: #9A6206; --warn-bg: #FFF6E5;
     --ok: #2F6B4F; --ok-bg: #E9F3EC;
     --core: #16181B; --core-2: #1E2125; --core-line: #2C3036; --core-ink: #D8DCD6; --core-soft: #8A9089; --core-key: #9FC7B4; --core-edit: #E3B25A;
-    --serif: "Newsreader", Georgia, serif; --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --serif: "Newsreader", "Newsreader Fallback", Georgia, serif; --sans: "Inter", "Inter Fallback", Arial, sans-serif; --mono: "IBM Plex Mono", "Plex Mono Fallback", "Courier New", monospace;
     --ease: 120ms ease; --radius: 6px;
     --shadow: 0 1px 0 rgba(26,26,24,.06), 0 18px 48px -28px rgba(26,26,24,.35);
 }
@@ -304,3 +310,5 @@ ul, ol { list-style: none; padding: 0; }
 .hint code { font-family: var(--mono); font-size: 12px; color: var(--ink); background: var(--ground); padding: 1px 5px; border-radius: 3px; }
 .core-tag { white-space: nowrap; }
 .warnline { font-size: 12.5px; color: var(--warn); background: var(--warn-bg); padding: 8px 10px; border-radius: var(--radius); }
+/* The footer waits for the app, so the app's arrival can't push it down the page (layout shift). */
+.js:not(.is-ready) .provenance { visibility: hidden; }

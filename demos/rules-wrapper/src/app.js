@@ -478,3 +478,4 @@ if (window.parent !== window && "ResizeObserver" in window) {
 }
 
 render();
+document.documentElement.classList.add("is-ready");
