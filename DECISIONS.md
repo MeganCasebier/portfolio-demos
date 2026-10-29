@@ -22,3 +22,17 @@ Rulings from the principal, in order. Each one traces a choice in the code to wh
 - **D-7, footer.** Demo 1 links to https://megancasebier.com/case-studies/rules-engine/.
 - **D-8, recording.** Headless and scripted with ffmpeg. If it reads robotic, fall back to a
   click-by-click script recorded by hand, and say so.
+
+## 2026-10-29
+
+- **D-9, confirmed judgment calls.** Decision is an editable dropdown in edit mode; reason codes stay
+  read-only (closed vocabulary). Tests re-run live only after a manual first Run all: the visitor
+  chooses to run reality once, then reality follows them. "Play the other roles" is part of the
+  demo's story. The first-visit hint and noindex/robots stand.
+- **D-10, Demo 2's home.** A private second repo, merged into this one the day the policy page
+  launches. Nothing about it is referenced here before then.
+- **D-11, approver names.** Jordan Hale, Priya Nandakumar and Theo Marchetti are clear of every
+  colleague in the record; the principal checks them once against the company directory.
+- **D-12, Lighthouse.** Run locally with npx; report scores; "not embarrassing" is the bar.
+- **D-13, the next gate.** After the capture and Lighthouse, stop. The principal reviews the preview
+  herself before the repo, DNS or any production deploy changes.
