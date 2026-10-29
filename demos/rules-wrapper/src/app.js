@@ -140,7 +140,7 @@ function renderLegend() {
 }
 function renderVersions() {
   const rows = [...(state.pending ? [{ version: state.pending.version, status: state.pending.status, by: "You", date: state.pending.date || "No date yet", note: state.pending.note || "No description yet" }] : []), ...state.versions];
-  return `<div class="versions"><p class="label">Version history</p><ul>${rows.map((v) => `<li><span class="mono">v${v.version}</span>${pill(v.status)}<span class="v-note">${esc(v.note)}</span><span class="muted">${esc(v.by)} &middot; ${esc(v.date)}</span></li>`).join("")}</ul></div>`;
+  return `<div class="versions"><p class="label">Version history</p><ul>${rows.map((v) => `<li><span class="mono">v${v.version}</span>${pill(v.status)}<span class="v-note">${esc(v.note)}</span><span class="muted">${esc(v.by)} &middot; ${esc(niceDate(v.date))}</span></li>`).join("")}</ul></div>`;
 }
 
 // ---------- the stepper ----------
@@ -194,6 +194,7 @@ function renderReview() {
         <label class="field"><span>Effective date</span><input type="date" id="f-date" value="${esc(r.date)}" ${r.errors.date ? 'aria-invalid="true" aria-describedby="err-date"' : ""}>${err("date")}</label>
         <label class="field"><span>What changed, and why <i class="req">required</i></span><textarea id="f-note" rows="3" placeholder="Written for the next reviewer, not the computer." ${r.errors.note ? 'aria-invalid="true" aria-describedby="err-note"' : ""}>${esc(r.note)}</textarea>${err("note")}</label>
         <label class="field"><span>Approver</span><select id="f-approver" ${r.errors.approver ? 'aria-invalid="true" aria-describedby="err-approver"' : ""}><option value="">Name the person who signs off</option>${APPROVERS.map((a) => `<option ${a === r.approver ? "selected" : ""}>${a}</option>`).join("")}</select>${err("approver")}</label>
+        ${counts().failed ? `<p class="warnline">${counts().failed} test${counts().failed > 1 ? "s fail" : " fails"} against this version. QA will see ${counts().failed > 1 ? "them" : "it"}; if the change is intended, update the expectation first.</p>` : ""}
         <p class="muted small">QA reviews first, then the approver. Both are named on the version.</p>
         <div class="review-actions"><button type="button" class="btn btn--quiet" data-action="back-edit">Back to values</button><span class="spacer"></span><button type="button" class="btn btn--quiet" data-action="save-draft">Save draft</button><button type="button" class="btn btn--primary" data-action="submit">Submit to QA</button></div>
       </div>
@@ -421,6 +422,7 @@ function readRecord() {
   const d = document.getElementById("f-date"), n = document.getElementById("f-note"), a = document.getElementById("f-approver");
   if (d) state.record.date = d.value; if (n) state.record.note = n.value; if (a) state.record.approver = a.value;
 }
+const niceDate = (d) => (/^\d{4}-\d{2}-\d{2}$/.test(d) ? new Date(d + "T12:00").toLocaleDateString("en-US", { month: "short", day: "numeric" }) : d);
 const pickRecord = () => ({ date: state.record.date, note: state.record.note, approver: state.record.approver });
 
 app.addEventListener("input", (e) => {

@@ -37,9 +37,13 @@ export async function open(url, { width = 1440, height = 900, scale = 1, dark = 
   // Human-paced pointer: ease the cursor along a path instead of teleporting.
   async function moveTo(x, y, ms = 420) {
     const sx = mouse.x, sy = mouse.y, steps = Math.max(8, Math.round(ms / 16));
+    // A hand doesn't travel in straight lines: bow the path a little, to a random side.
+    const dx = x - sx, dy = y - sy, bow = (Math.random() < .5 ? -1 : 1) * (0.06 + Math.random() * 0.06);
+    const cx = sx + dx / 2 - dy * bow, cy = sy + dy / 2 + dx * bow;
     for (let i = 1; i <= steps; i++) {
       const t = i / steps, k = t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-      mouse.x = sx + (x - sx) * k; mouse.y = sy + (y - sy) * k;
+      mouse.x = (1 - k) * (1 - k) * sx + 2 * (1 - k) * k * cx + k * k * x;
+      mouse.y = (1 - k) * (1 - k) * sy + 2 * (1 - k) * k * cy + k * k * y;
       await send("Input.dispatchMouseEvent", { type: "mouseMoved", x: mouse.x, y: mouse.y });
       await sleep(16);
     }
