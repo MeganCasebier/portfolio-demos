@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rules Wrapper, a working demo | Megan Casebier</title>
+    <meta name="description" content="A designed shell around an immovable rules table, with a test panel that really evaluates. A fresh rebuild of the pattern, with fictional data.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip" href="#core">Skip to the rules table</a>
+
+    <header class="intro">
+        <p class="kicker">A working demo &middot; fictional data</p>
+        <h1>The rules wrapper</h1>
+        <p class="lede">The table in the middle belongs to a third-party engine, and design couldn&rsquo;t change its shape. Everything around it is designed. Click a cell, edit a value, and watch the tests answer.</p>
+    </header>
+
+    <div class="app" id="app" aria-live="off">
+        <noscript><p class="noscript">This demo runs in the browser and needs JavaScript.</p></noscript>
+    </div>
+
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    <div class="tip" id="tip" role="tooltip" hidden></div>
+
+    <footer class="provenance" data-provenance>
+        A fresh rebuild of the pattern on personal time &mdash; no employer code, data, or design assets. The original story: <a href="https://megancasebier.com/case-studies/rules-engine/">Designing a rules engine humans can read</a>.
+    </footer>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>
