@@ -36,3 +36,12 @@ Rulings from the principal, in order. Each one traces a choice in the code to wh
 - **D-12, Lighthouse.** Run locally with npx; report scores; "not embarrassing" is the bar.
 - **D-13, the next gate.** After the capture and Lighthouse, stop. The principal reviews the preview
   herself before the repo, DNS or any production deploy changes.
+- **D-14, the review warning is spec.** Design change driven by observed failure: the first
+  recording approved a version with a test still red. Review now says, when tests fail, "QA will see
+  it; if the change is intended, update the expectation first." It is part of the demo, not an incident.
+- **D-15, zero layout shift.** The bar is "the work sample," not "not embarrassing." The footer
+  waits for the app to render; each web font has a fallback face with measured size-adjust and
+  ascent/descent overrides. Newsreader's is tuned at 18-21px, where its optical sizing narrows it and
+  where wrapping happens. Verified: with fonts blocked, every measured element matches the loaded
+  layout to the pixel at 390 and 1440. Lighthouse CLS 0 on mobile and desktop.
+- **D-16, SEO.** 63 is correct while noindexed; re-run that category after the public flip.

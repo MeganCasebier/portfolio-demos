@@ -2,10 +2,10 @@
    IBM Plex Mono for the engine's table and anything code-flavored. The shell is warm paper; the
    engine is dark and foreign on purpose. Motion is 120ms ease, and reduced motion turns it off. */
 
-/* Fallbacks tuned to the web fonts' measured metrics (Chrome, canvas measureText at 100px), so the
+/* Fallbacks tuned to the web fonts' measured metrics (Chrome, rendered widths and font ascent/descent), so the
    swap from system font to web font moves nothing. Override = font metric / size-adjust. */
 @font-face { font-family: "Inter Fallback"; src: local("Arial"); size-adjust: 106.72%; ascent-override: 90.89%; descent-override: 22.49%; line-gap-override: 0%; }
-@font-face { font-family: "Newsreader Fallback"; src: local("Georgia"); size-adjust: 100.16%; ascent-override: 73.88%; descent-override: 25.96%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader Fallback"; src: local("Georgia"); size-adjust: 88.6%; ascent-override: 83.52%; descent-override: 29.35%; line-gap-override: 0%; } /* width tuned at 18-21px, where wrapping happens; Newsreader's optical sizing narrows it there */
 @font-face { font-family: "Plex Mono Fallback"; src: local("Courier New"); size-adjust: 99.98%; ascent-override: 102.02%; descent-override: 27.01%; line-gap-override: 0%; }
 
 :root {
