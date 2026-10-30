@@ -1,5 +1,6 @@
 // Fictional everything: the carrier, the aggregators, the partners and their restrictions are invented
-// for this demo. The states are the real fifty plus DC, because a restriction is drawn on a real map.
+// for this demo. Aggregators and partners carry codes and generic labels, never proper nouns, so none
+// can collide with a real partner's name. The states are the real fifty plus DC, because a restriction is drawn on a real map.
 
 export const CARRIER = "Lakeshore";
 
@@ -18,9 +19,9 @@ export const STATES = [
 export const STATE_NAME = Object.fromEntries(STATES);
 
 const AGGREGATORS = [
-  { id: "pinebrook", name: "Pinebrook Network", prefix: "PB", size: 14 },
-  { id: "harbor", name: "Harbor Exchange", prefix: "HX", size: 13 },
-  { id: "crestview", name: "Crestview Alliance", prefix: "CV", size: 13 },
+  { id: "north", name: "Aggregator North", prefix: "AN", size: 14 },
+  { id: "central", name: "Aggregator Central", prefix: "AC", size: 13 },
+  { id: "south", name: "Aggregator South", prefix: "AS", size: 13 },
 ];
 
 export const GROUPS = AGGREGATORS.map((a) => ({
@@ -34,9 +35,9 @@ export const GROUPS = AGGREGATORS.map((a) => ({
 // The saved restrictions the demo opens with: a handful of partners barred in a handful of states,
 // clustered on the coasts the way a carrier's appetite would be. Fixed, so every visit starts the same.
 export const SAVED = {
-  "PB-02": ["FL", "LA"], "PB-05": ["FL"], "PB-07": ["CA", "FL", "TX"], "PB-11": ["NY"], "PB-13": ["FL", "SC"],
-  "HX-01": ["FL", "TX"], "HX-04": ["LA"], "HX-06": ["CA"], "HX-09": ["FL", "GA", "SC"], "HX-12": ["TX"],
-  "CV-03": ["FL"], "CV-04": ["CA", "OR", "WA"], "CV-08": ["NJ", "NY"], "CV-10": ["FL", "LA", "MS"],
+  "AN-02": ["FL", "LA"], "AN-05": ["FL"], "AN-07": ["CA", "FL", "TX"], "AN-11": ["NY"], "AN-13": ["FL", "SC"],
+  "AC-01": ["FL", "TX"], "AC-04": ["LA"], "AC-06": ["CA"], "AC-09": ["FL", "GA", "SC"], "AC-12": ["TX"],
+  "AS-03": ["FL"], "AS-04": ["CA", "OR", "WA"], "AS-08": ["NJ", "NY"], "AS-10": ["FL", "LA", "MS"],
 };
 
 export const START_STATE = "FL";

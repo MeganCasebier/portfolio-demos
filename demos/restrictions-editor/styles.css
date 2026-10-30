@@ -57,7 +57,7 @@ abbr { text-decoration: none; }
 
 /* ---------- the editor ---------- */
 .app { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-.shell { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.shell { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; overflow: clip; } /* clip, not hidden: hidden would trap the sticky save bar */
 .bar, .toolbar, .savebar { display: flex; align-items: center; gap: 8px 16px; padding: 10px 16px; flex-wrap: wrap; }
 .bar { border-bottom: 1px solid var(--rule); }
 .brand { display: flex; align-items: center; gap: 9px; font-weight: 600; white-space: nowrap; }

@@ -55,3 +55,14 @@ Rulings from the principal, in order. Each one traces a choice in the code to wh
   MIT license. The approved MP4 ships byte-for-byte as approved; it is not re-encoded.
 - **D-18, where it deploys.** The Netlify site is `megancasebier-demos`, always named explicitly on
   deploy: this folder sits under a home directory whose own Netlify link points somewhere else.
+- **D-19, noindex is permanent.** The demos are exhibits reached through the portfolio; the
+  case-study pages carry the SEO. D-16's "re-run SEO after the flip" applies to the site, not to this
+  subdomain.
+- **D-20, the restrictions editor.** Chapter 4 of "Prototypes, end to end", and its footer links
+  there. Public with the flip: it isn't held like Demo 2, because its case study is already live.
+  Its finish is pitched mid-2026 on purpose.
+- **D-21, names on this domain.** Partners and aggregators get codes and generic labels only
+  ("Agency 07", "AN-07", "Aggregator North"), never invented proper nouns, which can't be checked
+  against real partners. Lakeshore, Pinebrook and Harbor are carriers everywhere on this domain.
+- **D-22, the editor's recording.** A 15-20 second loop for the chapter figure, from the same
+  pipeline as Demo 1's recording. No standalone video.

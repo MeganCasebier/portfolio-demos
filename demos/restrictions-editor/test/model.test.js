@@ -16,12 +16,12 @@ test("about forty fictional partners, every saved restriction on a known partner
 
 test("toggle and set never mutate their input", () => {
   const r = fromSaved(SAVED);
-  const t = toggle(r, "PB-01", "FL");
-  assert.ok(has(t, "PB-01", "FL"));
-  assert.ok(!has(r, "PB-01", "FL"));
-  const cleared = set(r, ["PB-05"], "FL", false);
-  assert.ok(!cleared.has("PB-05"), "an empty partner drops out of the map");
-  assert.ok(has(r, "PB-05", "FL"));
+  const t = toggle(r, "AN-01", "FL");
+  assert.ok(has(t, "AN-01", "FL"));
+  assert.ok(!has(r, "AN-01", "FL"));
+  const cleared = set(r, ["AN-05"], "FL", false);
+  assert.ok(!cleared.has("AN-05"), "an empty partner drops out of the map");
+  assert.ok(has(r, "AN-05", "FL"));
 });
 
 test("select-all and clear drive the group checkbox through all three states", () => {
@@ -33,19 +33,19 @@ test("select-all and clear drive the group checkbox through all three states", (
   assert.equal(countIn(r, g.partners, "FL"), g.partners.length);
   r = set(r, ids, "FL", false);
   assert.equal(groupState(r, g, "FL"), "none");
-  assert.deepEqual(statesOf(r, "PB-02"), ["LA"], "clearing one state leaves the partner's others alone");
+  assert.deepEqual(statesOf(r, "AN-02"), ["LA"], "clearing one state leaves the partner's others alone");
 });
 
 test("diff lists exactly what save would change, and nothing when a change is undone", () => {
   const saved = fromSaved(SAVED);
-  let d = toggle(toggle(saved, "HX-02", "TX"), "PB-05", "FL");
-  assert.deepEqual(diff(saved, d), [{ id: "HX-02", st: "TX", on: true }, { id: "PB-05", st: "FL", on: false }]);
-  d = toggle(d, "HX-02", "TX");
+  let d = toggle(toggle(saved, "AC-02", "TX"), "AN-05", "FL");
+  assert.deepEqual(diff(saved, d), [{ id: "AC-02", st: "TX", on: true }, { id: "AN-05", st: "FL", on: false }]);
+  d = toggle(d, "AC-02", "TX");
   assert.equal(diff(saved, d).length, 1);
 });
 
 test("the by-state summary inverts the map", () => {
   const s = byState(fromSaved(SAVED));
-  assert.deepEqual(s.get("TX"), ["HX-01", "HX-12", "PB-07"]);
+  assert.deepEqual(s.get("TX"), ["AC-01", "AC-12", "AN-07"]);
   assert.equal([...s.keys()][0], "CA");
 });
