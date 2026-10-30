@@ -66,3 +66,18 @@ Rulings from the principal, in order. Each one traces a choice in the code to wh
   against real partners. Lakeshore, Pinebrook and Harbor are carriers everywhere on this domain.
 - **D-22, the editor's recording.** A 15-20 second loop for the chapter figure, from the same
   pipeline as Demo 1's recording. No standalone video.
+- **D-23, the flip, done.** The order of operations: the principal force-pushed the rewritten history
+  (GitHub's head went from 1be6f99 to 3df2ba4), and all 12 commits on GitHub were then verified as
+  noreply only. Then the repo went public, the license was confirmed as MIT, and both demos went to
+  production. demos.megancasebier.com resolves and serves both demos over HTTPS.
+- **D-24, the rung shipped.** The restrictions editor is live as chapter 4. Its 15-20 second loop
+  caught a real bug before release: `overflow: hidden` on the shell trapped the sticky save bar below
+  the fold. It is now `overflow: clip`, verified at 1440 and 390.
+- **D-25, the one-command walkthrough.** Steps the agent can't or mustn't take itself are handed to
+  the principal one command at a time: the command alone, one sentence on what it does and why, what
+  success looks like, then a stop. Each result is verified before the next step goes out.
+- **D-26, residual risk, accepted.** "Work-email identity in unreachable pre-rewrite commits; SHAs
+  unpublished; risk accepted." Not deleted and recreated: the repo was private for its whole
+  history, and the scrubbed content is an email address, not a credential. GitHub garbage-collects
+  unreachable objects in time, and a support request can purge them sooner. No delete permission is
+  granted for this.
