@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Restrictions Editor, a working demo | Megan Casebier</title>
+    <meta name="description" content="Partners grouped under their aggregators, restricted state by state: select a group, clear it, count it, and read back what is in effect. A fresh rebuild of the pattern, with fictional data.">
+    <meta name="robots" content="noindex, nofollow">
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fonts load without blocking first paint; the system fallbacks hold the layout until they arrive. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip" href="#app">Skip to the editor</a>
+
+    <header class="intro">
+        <p class="kicker">A working demo &middot; fictional data &middot; the pattern in mid-2026</p>
+        <h1>The restrictions editor</h1>
+        <p class="lede">A carrier can bar a partner from selling in a state. Partners sit under the aggregators that bring them in, so the editor is built around the group: select a whole aggregator for a state, clear it, count it, then read back what&rsquo;s in effect.</p>
+    </header>
+
+    <div class="app" id="app">
+        <noscript><p class="noscript">This demo runs in the browser and needs JavaScript.</p></noscript>
+    </div>
+
+    <dialog class="summary" id="summary" aria-labelledby="summary-title"></dialog>
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+    <footer class="provenance" data-provenance>
+        A fresh rebuild of the pattern on personal time &mdash; no employer code, data, or design assets. The original story: <a href="https://megancasebier.com/">megancasebier.com</a>.
+    </footer>
+
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>

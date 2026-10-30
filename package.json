@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test demos/rules-wrapper/test/*.test.js",
+    "test": "node --test demos/*/test/*.test.js",
     "check": "node tools/blocklist.mjs",
     "build": "node tools/build.mjs",
     "check:history": "node tools/blocklist.mjs --history"
