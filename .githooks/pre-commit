@@ -1,2 +1,4 @@
 #!/bin/sh
+# The repo is public: only the GitHub noreply address may author a commit here.
+git var GIT_AUTHOR_IDENT | grep -qE '<[0-9]+\+MeganCasebier@users\.noreply\.github\.com>' || { echo "pre-commit: author is not the noreply address; set git config user.email" >&2; exit 1; }
 node tools/blocklist.mjs

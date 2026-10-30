@@ -2,8 +2,10 @@
 // Words are stored base64-encoded so this checker never contains them itself.
 // Usage: node tools/blocklist.mjs            (scan the working tree)
 //        node tools/blocklist.mjs --msg FILE (scan a commit message)
+//        node tools/blocklist.mjs --history  (scan every blob, path, message and identity in git history)
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const ENCODED = ["aGF6YXJkaHVi","aGF6YXJkIGh1Yg==","aXBn","YWxhY3JpdHk=","ZWxhY2FyaXR5","YW5pY28=","Z29ydWxlcw==","Z28gcnVsZXM=","amRt","Y2x1ZQ==","bXNp","aGFkcm9u","dHJhbnN2ZXJzZQ==","c3Bpbm5ha2Vy","c3RhcnN0b25l","c3RhcnRzdG9uZQ==","ZXZhbnN0b24=","bWFya2Vs","bWFya2VsbA==","aHNpYw==","Zm9ydGlmeQ==","aGFsbw==","b2JpZQ=="];
 const words = ENCODED.map((b) => Buffer.from(b, "base64").toString());
@@ -37,9 +39,25 @@ function walk(dir, acc = []) {
   return acc;
 }
 
+// The repo is public, so every author and committer must be the GitHub noreply address.
+const IDENTITY = /^\d+\+MeganCasebier@users\.noreply\.github\.com$/;
+const git = (...args) => execFileSync("git", args, { encoding: "utf8", maxBuffer: 1 << 28 });
+
 let problems = [];
 const i = process.argv.indexOf("--msg");
-if (i > -1) {
+if (process.argv.includes("--history")) {
+  for (const line of git("log", "--all", "--format=%h%x00%ae%x00%ce").trim().split("\n")) {
+    const [h, ae, ce] = line.split("\0");
+    if (!IDENTITY.test(ae) || !IDENTITY.test(ce)) problems.push(`commit ${h}: identity is not the noreply address`);
+  }
+  for (const h of git("rev-list", "--all").trim().split("\n")) problems.push(...hits(git("log", "-1", "--format=%B", h), "message " + h.slice(0, 7)));
+  for (const line of git("rev-list", "--all", "--objects").trim().split("\n")) {
+    const [sha, path] = line.split(" ");
+    if (path) problems.push(...hits(path, "path " + path));
+    if (git("cat-file", "-t", sha).trim() !== "blob" || BINARY.test(path || "")) continue;
+    problems.push(...hits(git("cat-file", "-p", sha), `${path} @${sha.slice(0, 7)}`));
+  }
+} else if (i > -1) {
   problems = hits(readFileSync(process.argv[i + 1], "utf8"), "commit message");
 } else {
   const root = process.cwd();

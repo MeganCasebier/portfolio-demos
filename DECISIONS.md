@@ -45,3 +45,13 @@ Rulings from the principal, in order. Each one traces a choice in the code to wh
   where wrapping happens. Verified: with fonts blocked, every measured element matches the loaded
   layout to the pixel at 390 and 1440. Lighthouse CLS 0 on mobile and desktop.
 - **D-16, SEO.** 63 is correct while noindexed; re-run that category after the public flip.
+
+## 2026-10-30
+
+- **D-17, the public flip.** The principal reviewed the recording and said go. Before the flip, every
+  commit's author and committer was rewritten to the GitHub noreply address (the history had carried
+  a work address), and the gate grew a `--history` mode that scans every blob, path and message ever
+  committed and refuses any identity that isn't the noreply one. The pre-commit hook refuses one too.
+  MIT license. The approved MP4 ships byte-for-byte as approved; it is not re-encoded.
+- **D-18, where it deploys.** The Netlify site is `megancasebier-demos`, always named explicitly on
+  deploy: this folder sits under a home directory whose own Netlify link points somewhere else.
